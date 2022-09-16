@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PoissonDistributionService } from '../services/poisson-distribution.service';
-
+import { BusService } from '../services/bus.service';
+import { probabilityMassFunction } from '../cpus-web-workers/shared/instruc-generation/poisson/probability-mass-function';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -8,10 +8,12 @@ import { PoissonDistributionService } from '../services/poisson-distribution.ser
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private poisson: PoissonDistributionService) { }
+  constructor(private bus: BusService) { }
 
   ngOnInit(): void {
-    console.log(this.poisson.poissonDistribution(3, 5))
+    this.bus.startCPUs()
   }
+
+
 
 }
