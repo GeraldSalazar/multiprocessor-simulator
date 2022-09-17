@@ -35,7 +35,6 @@ export class BusService {
 
   postActionToCPUs(message: any){
     this.cpus.forEach((cpu) => {
-      console.log(cpu)
       cpu.postMessage(message);
     });
   }
@@ -44,8 +43,16 @@ export class BusService {
     this.cpus.forEach((cpu) => {
       cpu.onmessage = ({ data }) => {
         console.log(data)
+        this.postActionToCPUs(data)
       }
     })
+  }
+
+  // todo: DEFINE DATA OBJECT INTERFACE
+  // cpuNum from the instruc ranges from 1 to 4, 
+  // so just substracts 1 to find the correct cpu to send the data
+  sendInfoToSpecificCPU(cpuNum: number, data: any){
+    this.cpus[cpuNum - 1].postMessage(data);
   }
 
 }

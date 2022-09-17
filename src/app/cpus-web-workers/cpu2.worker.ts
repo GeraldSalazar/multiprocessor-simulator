@@ -1,6 +1,6 @@
 /// <reference lib="webworker" />
 
 addEventListener('message', ({ data }) => {
-  const response = `worker response to ${data}`;
-  console.log(response);
+  const response = `cpu2 got message:`;
+  console.log(response, data);
 });

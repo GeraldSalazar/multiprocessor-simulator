@@ -11,9 +11,9 @@ export class HomeComponent implements OnInit {
   constructor(private bus: BusService) { }
 
   ngOnInit(): void {
-    this.bus.startCPUs()
+    //this.bus.startCPUs()
     // this.bus.postActionToCPUs('Message from main thread')
-    this.bus.setChannelToWorkers()
+    //this.bus.sendInfoToSpecificCPU(1,{rate: 3000})
   }
 
 
